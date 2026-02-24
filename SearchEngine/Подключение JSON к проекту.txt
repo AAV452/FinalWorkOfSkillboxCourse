@@ -1,0 +1,28 @@
+Для запуска проекта:
+	В папке с проектом есть архив "nlohmann_json.rar" (создан только для залива в репозиторий GitHub)
+	- распаковать его, не переименовывая. Более ничего делать не надо, все файлы настроены.
+	- сам архив удалить.
+	
+
+Как вообще подключается библиотека к проекту:
+Для создания проекта с JSON форматом необходимо продключить данную библиотеку к проекту:	
+1. https://github.com/nlohmann/json перейти на Integration -> CMake
+2. Использовать вариант с Embedded-настройкой (включение библиотеке прямо в дерево папки проекта):
+   - для этого вверху страницы нажать кнопку "<> Code" и выбрать "Dowload ZIP";
+   - в папку проекта распаковать скачаную папку "json-develop", переименовав её в "nlohmann_json".
+3. В папке проекта создать CMakeLists.txt:
+
+   	cmake_minimum_required(VERSION 3.17)
+	project("My_Project")
+
+	set(CMAKE_CXX_STANDART 14)
+
+	set(JSON_BuildTests OFF CACHE INTERNAL "")
+	add_subdirectory(nlohmann_json)
+
+	add_executable("My_Project" main.cpp)
+
+	target_link_libraries("My_Project" PRIVATE nlohmann_json::nlohmann_json)
+
+4. В срр-файле (в данном случае) main.cpp подключить: 
+	#include <nlohmann/json.hpp>

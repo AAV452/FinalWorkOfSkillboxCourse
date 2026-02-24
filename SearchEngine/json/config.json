@@ -1,0 +1,33 @@
+{
+	"config": {
+			    "name": "SkillboxEngine",
+			    "version": "0.1",
+			    "max_responses": 5
+	
+	},
+	"files": [
+				"../../resources/file001.txt",
+			    "../../resources/file002.txt",
+			    "../../resources/file003.txt",
+			    "../../resources/file004.txt",
+				"../../resources/file005.txt",
+			    "../../resources/file006.txt",
+			    "../../resources/file007.txt",
+			    "../../resources/file008.txt",
+				"../../resources/file009.txt",
+			    "../../resources/file010.txt",
+				"../../resources/file011.txt",
+			    "../../resources/file012.txt",
+			    "../../resources/file013.txt",
+			    "../../resources/file014.txt",
+				"../../resources/file015.txt",
+			    "../../resources/file016.txt",
+			    "../../resources/file017.txt",
+			    "../../resources/file018.txt",
+				"../../resources/file019.txt",
+				"../../resources/file020.txt",
+				"../../resources/file021.txt",
+				"../../resources/file022.txt"
+			    
+	]
+}

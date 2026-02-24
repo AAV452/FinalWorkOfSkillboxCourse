@@ -1,0 +1,53 @@
+1.  Для подключения Google Test к проекту Vs Code их нужно скачать с GitHub. Версию тестов нужно
+	выбирать согласно версии CMake. На сайте 	https: //github.com/google/googletest
+	слева (над файламми) нажать кнопка выбора версий (у меня кнопка называлась main).
+	Для CMake4.0.0 нужно использовать Google Test версии v1.14.x:
+	
+2.  В CMakeLists.txt, в котором будет линковаться исполняемый файл, перед командой add_executable()
+	небходимо написать следующий код:
+	
+		##################### подключение Google Test из GitHub:
+		#библиотека Google Test используется напрямую из GitHub, поэтому необходимо добавить строки:
+		include(FetchContent)
+		FetchContent_Declare( googletest URL
+							  #для CMake4.0.0 нужно использовать Google Test версии v1.14.x:
+							  #на сайте https://github.com/google/googletest слева кнопка выбора версий:
+							  https://github.com/google/googletest/archive/refs/heads/v1.14.x.zip)
+
+		include_directories(${gtest_SOURCE_DIR}/include${gtest_SOURCE_DIR})
+		
+		#для корректной работы библиотеки c компилятором MinGW, необходимо добавить:
+		set(gtest_disable_pthreadson)
+
+		#выставим динамическое подключение библиотеки к проекту:
+		set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+		#делаем все настройки доступными для проекта:
+		FetchContent_MakeAvailable(googletest)
+
+		#указываем, что в проекте будут применятся тесты:
+		enable_testing()
+
+		#см. в конце файла добавление библиотеки gtest_main к проекту:
+		##################### библиотека Google Test подключена
+		
+3.	В самом конце CMakeLists.txt добавить строки:
+
+		#### теперь добавим библиотеку gtest_main:
+		target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE gtest_main)
+		include(GoogleTest)
+		gtest_discover_tests(${CMAKE_PROJECT_NAME})
+		####
+		
+4. 	Собрать проект F7 или в командной строке >CMake:Build
+
+5. 	Запустить главный .срр проекта на выполнение Shift+F5
+
+6. 	Для теста проекта нужно создать в папке с главным .срр файл теста: <имя_тест_файла>.cpp,
+	подключить его к проекту в CMakeLists.txt добавить в команду:
+		add_executable(...<имя_тест_файла>.cpp...)
+		
+7.  Для работы с Google Test (gtest) в VS Code наиболее эффективны расширения:
+		C++ TestMate и Google Test Explorer.
+	Они позволят запускать, отслеживать и визуализировать тесты прямо в интерфейсе, обеспечивая
+	удобное отображение результатов тестирования.

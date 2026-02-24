@@ -1,0 +1,32 @@
+{
+    "answers": {
+        "request001": {
+            "relevace": [
+                {
+                    "doc_id": 7,
+                    "rank": 1.0
+                },
+                {
+                    "doc_id": 14,
+                    "rank": 1.0
+                },
+                {
+                    "doc_id": 2,
+                    "rank": 0.6666666865348816
+                },
+                {
+                    "doc_id": 3,
+                    "rank": 0.6666666865348816
+                },
+                {
+                    "doc_id": 4,
+                    "rank": 0.6666666865348816
+                }
+            ],
+            "rezult": true
+        },
+        "request002": {
+            "rezult": false
+        }
+    }
+}
